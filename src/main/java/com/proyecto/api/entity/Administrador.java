@@ -1,0 +1,5 @@
+package com.proyecto.api.entity;
+
+public class Administrador {
+
+}
