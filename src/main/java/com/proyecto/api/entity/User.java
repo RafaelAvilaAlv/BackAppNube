@@ -1,35 +1,33 @@
 package com.proyecto.api.entity;
 
- 
 
 import jakarta.persistence.*;
-import java.io.Serializable;
-import java.util.List;
 
 @Entity
-@Table(name = "clientes", uniqueConstraints = {@UniqueConstraint(columnNames = {"cedula_persona", "idCliente"})})
-public class Cliente implements Serializable {
+@Table(name = "usuarios")
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idCliente;
+    private Long idUsuario;
 
     private String usuario;
     private String contrasena;
-    private String foto;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "cedula_persona")
+    @JoinColumn(name = "cedula_persona", referencedColumnName = "cedula_persona")
     private Persona persona;
 
-  
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_rol")
+    private Role rol;
 
-	public Long getIdCliente() {
-		return idCliente;
+	public Long getIdUsuario() {
+		return idUsuario;
 	}
 
-	public void setIdCliente(Long idCliente) {
-		this.idCliente = idCliente;
+	public void setIdUsuario(Long idUsuario) {
+		this.idUsuario = idUsuario;
 	}
 
 	public String getUsuario() {
@@ -48,14 +46,6 @@ public class Cliente implements Serializable {
 		this.contrasena = contrasena;
 	}
 
-	public String getFoto() {
-		return foto;
-	}
-
-	public void setFoto(String foto) {
-		this.foto = foto;
-	}
-
 	public Persona getPersona() {
 		return persona;
 	}
@@ -64,7 +54,13 @@ public class Cliente implements Serializable {
 		this.persona = persona;
 	}
 
+	public Role getRol() {
+		return rol;
+	}
 
+	public void setRol(Role rol) {
+		this.rol = rol;
+	}
 
     // Getters y Setters
     
