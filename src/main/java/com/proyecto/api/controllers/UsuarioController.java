@@ -9,7 +9,7 @@ import com.proyecto.api.services.IUsuarioService;
 
 @RestController
 @RequestMapping("/api/usuarios")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*")
 public class UsuarioController {
 
     @Autowired
